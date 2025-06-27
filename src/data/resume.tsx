@@ -10,29 +10,32 @@ export const DATA = {
   description:
     "Full stack web developer and an MCA graduate with 3 years of experience in web development. ",
   summary:
-    "At the end of 2022, I quit my job as a software engineer to go fulltime into building and scaling my own SaaS businesses. In the past, [I pursued a double degree in computer science and business](/#education), [interned at big tech companies in Silicon Valley](https://www.youtube.com/watch?v=d-LJ2e5qKdE), and [competed in over 21 hackathons for fun](/#hackathons). I also had the pleasure of being a part of the first ever in-person cohort of buildspace called [buildspace sf1](https://buildspace.so/sf1).",
+    "I am a Full Stack Web Developer with 3 years of hands-on experience in building dynamic and responsive web applications. I hold a Master’s degree in Computer Applications (MCA) with a solid foundation in computer science and real-world experience in modern web technologies.",
   avatarUrl: "/my-image.png",
   skills: [
-    "React",
-    "Next.js",
-    "Typescript",
+    "TypeScript",
+    "JavaScript",
     "Node.js",
-    "Python",
+    "Express.js",
+    "React.js",
+    "Next.js",
     "Postgres",
+    "MongoDb",
+    "Python",
+    "FastAPI",
     "Docker",
-    "Kubernetes",
     "AWS-EC2",
     "AWS-S3",
     "TailwindCSS",
-    "Prisma",
     "Git",
+    "Prisma",
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
   ],
   contact: {
-    email: "hello@example.com",
-    tel: "+123456789",
+    email: "saradhi8142385201@gmail.com",
+    tel: "+91 8142385201",
     social: {
       GitHub: {
         name: "GitHub",
@@ -63,7 +66,7 @@ export const DATA = {
 
   work: [
     {
-      company: "Intoglo Technologies Inc",
+      company: "Intoglo Private Limited",
       href: "https://intolgo.com",
       badges: [],
       location: "Remote/chennai",
@@ -71,8 +74,7 @@ export const DATA = {
       logoUrl: "/intoglo.png",
       start: "Oct 2022",
       end: "Present",
-      description:
-        "Implemented the Bitcoin discreet log contract (DLC) protocol specifications as an open source Typescript SDK. Dockerized all microservices and setup production kubernetes cluster. Architected a data lake using AWS S3 and Athena for historical backtesting of bitcoin trading strategies. Built a mobile app using react native and typescript.",
+      description: "I am a Full Stack Web Developer with 3 years of hands-on experience in building dynamic and responsive web applications. I hold a Master’s degree in Computer Applications (MCA) with a solid foundation in computer science and real-world experience in modern web technologies.",
     }
   ],
   education: [
