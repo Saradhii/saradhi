@@ -13,22 +13,66 @@ export const DATA = {
     "I am a Full Stack Web Developer with 3 years of hands-on experience in building dynamic and responsive web applications. I hold a Master’s degree in Computer Applications (MCA) with a solid foundation in computer science and real-world experience in modern web technologies.",
   avatarUrl: "/my-image.png",
   skills: [
-    "TypeScript",
-    "JavaScript",
-    "Node.js",
-    "Express.js",
-    "React.js",
-    "Next.js",
-    "Postgres",
-    "MongoDb",
-    "Python",
-    "FastAPI",
-    "Docker",
-    "AWS-EC2",
-    "AWS-S3",
-    "TailwindCSS",
-    "Git",
-    "Prisma",
+    {
+      name: "Typescript",
+      icon: '/skills/typescript.svg'
+    },
+    {
+      name: "JavaScript",
+      icon: '/skills/javascript.svg'
+    },
+    {
+      name: "Node.js",
+      icon: '/skills/nodejs.svg'
+    },
+    {
+      name: "React.js",
+      icon: '/skills/reactjs.svg'
+    },
+    {
+      name: "Next.js",
+      icon: '/skills/nextjs.svg'
+    },
+    {
+      name: "Postgres",
+      icon: '/skills/postgresql.svg'
+    },
+    {
+      name: "MongoDb",
+      icon: '/skills/mongodb.svg'
+    },
+    {
+      name: "Python",
+      icon: '/skills/python.svg'
+    },
+    {
+      name: "FastAPI",
+      icon: '/skills/fastapi.svg'
+    },
+    {
+      name: "Docker",
+      icon: '/skills/docker.svg'
+    },
+    {
+      name: "AWS-EC2",
+      icon: '/skills/aws-ec2.svg'
+    },
+    {
+      name: "AWS-S3",
+      icon: '/skills/aws-s3.svg'
+    },
+    {
+      name: "TailwindCSS",
+      icon: '/skills/tailwindcss.svg'
+    },
+    {
+      name: "Git",
+      icon: '/skills/github.svg'
+    },
+    {
+      name: "Prisma",
+      icon: '/skills/prisma.svg'
+    },
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
@@ -63,7 +107,6 @@ export const DATA = {
       },
     },
   },
-
   work: [
     {
       company: "Intoglo Private Limited",
@@ -75,6 +118,17 @@ export const DATA = {
       start: "Oct 2022",
       end: "Present",
       description: "I am a Full Stack Web Developer with 3 years of hands-on experience in building dynamic and responsive web applications. I hold a Master’s degree in Computer Applications (MCA) with a solid foundation in computer science and real-world experience in modern web technologies.",
+    }
+  ],
+  resume: [
+    {
+      company: "Download or Preview",
+      href: "/resume/resume.pdf",
+      badges: [],
+      location: "Remote/chennai",
+      title: "My Updated Resume",
+      logoUrl: "/resume/pdf-svgrepo-com.svg",
+      status: "",
     }
   ],
   education: [

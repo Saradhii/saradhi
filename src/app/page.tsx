@@ -1,3 +1,4 @@
+"use client";
 import { HackathonCard } from "@/components/hackathon-card";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
@@ -8,10 +9,50 @@ import { Badge } from "@/components/ui/badge";
 import { DATA } from "@/data/resume";
 import Link from "next/link";
 import Markdown from "react-markdown";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import { useState } from "react";
 
 const BLUR_FADE_DELAY = 0.04;
 
 export default function Page() {
+  const [formData, setFormData] = useState({ email: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ email: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+        setErrorMessage(data.error || 'Failed to send message');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+      setErrorMessage('Failed to send message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   return (
     <main className="flex flex-col min-h-[100dvh] space-y-10">
       <section id="hero">
@@ -48,6 +89,30 @@ export default function Page() {
             {DATA.summary}
           </Markdown>
         </BlurFade>
+      </section>
+      <section id="resume">
+        <div className="flex min-h-0 flex-col gap-y-3">
+          <BlurFade delay={BLUR_FADE_DELAY * 5}>
+            <h2 className="text-xl font-bold">Resume</h2>
+          </BlurFade>
+          {DATA.resume.map((work, id) => (
+            <BlurFade
+              key={work.company}
+              delay={BLUR_FADE_DELAY * 6 + id * 0.05}
+            >
+              <ResumeCard
+                key={work.company}
+                logoUrl={work.logoUrl}
+                altText={work.company}
+                title={work.company}
+                subtitle={work.title}
+                href={work.href}
+                badges={work.badges}
+                period={work.status}
+              />
+            </BlurFade>
+          ))}
+        </div>
       </section>
       <section id="work">
         <div className="flex min-h-0 flex-col gap-y-3">
@@ -98,14 +163,23 @@ export default function Page() {
         </div>
       </section>
       <section id="skills">
-        <div className="flex min-h-0 flex-col gap-y-3">
+        <div className="flex min-h-0 flex-col gap-y-6">
           <BlurFade delay={BLUR_FADE_DELAY * 9}>
-            <h2 className="text-xl font-bold">Skills</h2>
+            <h2 className="text-xl font-bold text-center">Skills</h2>
           </BlurFade>
-          <div className="flex flex-wrap gap-1">
+          <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 max-w-4xl mx-auto">
             {DATA.skills.map((skill, id) => (
-              <BlurFade key={skill} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
-                <Badge key={skill}>{skill}</Badge>
+              <BlurFade key={skill.name} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
+                <div key={skill.name} className="flex flex-col items-center gap-2 px-3 py-4 border border-border rounded-lg bg-card hover:bg-accent transition-colors duration-200 text-center">
+                  <div className="w-8 h-8 rounded flex items-center justify-center">
+                    <img
+                      src={skill.icon}
+                      alt={skill.name}
+                      className="w-6 h-6"
+                    />
+                  </div>
+                  <span className="text-xs font-medium">{skill.name}</span>
+                </div>
               </BlurFade>
             ))}
           </div>
@@ -196,7 +270,7 @@ export default function Page() {
         </div>
       </section> */}
       <section id="contact">
-        <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-12">
+        <div className="grid items-center justify-center gap-8 px-4 text-center md:px-6 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 16}>
             <div className="space-y-3">
               <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
@@ -206,16 +280,93 @@ export default function Page() {
                 Get in Touch
               </h2>
               <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Want to chat? Just shoot me a dm{" "}
-                <Link
-                  href={DATA.contact.social.X.url}
-                  className="text-blue-500 hover:underline"
-                >
-                  with a direct question on twitter
-                </Link>{" "}
-                and I&apos;ll respond whenever I can. I will ignore all
-                soliciting.
+                Have a question or want to work together?
               </p>
+              <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                Choose your preferred way to connect.
+              </p>
+            </div>
+          </BlurFade>
+
+          {/* Quick Contact Links */}
+          <BlurFade delay={BLUR_FADE_DELAY * 17}>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-2xl mx-auto">
+              <Link
+                href="https://wa.me/918142385201?text=Hi%20Saradhi,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg transition-colors duration-200 font-medium w-32"
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" />
+                </svg>
+              </Link>
+
+              <Link
+                href="mailto:saradhi8142385201@gmail.com?subject=Portfolio%20Inquiry&body=Hi%20Saradhi,%0A%0AI%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!%0A%0ABest%20regards,"
+                className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg transition-colors duration-200 font-medium w-32"
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                </svg>
+              </Link>
+
+              <Link
+                href="https://x.com/saradhivj"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 bg-black hover:bg-gray-800 text-white px-8 py-3 rounded-lg transition-colors duration-200 font-medium w-32"
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+              </Link>
+            </div>
+          </BlurFade>
+
+          {/* Divider */}
+          <BlurFade delay={BLUR_FADE_DELAY * 18}>
+            <div className="flex items-center max-w-md mx-auto">
+              <div className="flex-1 border-t border-muted-foreground/20"></div>
+              <span className="px-4 text-sm text-muted-foreground">or</span>
+              <div className="flex-1 border-t border-muted-foreground/20"></div>
+            </div>
+          </BlurFade>
+
+          {/* Contact Form */}
+          <BlurFade delay={BLUR_FADE_DELAY * 19}>
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold">Send me a message</h3>
+              <form onSubmit={handleSubmit} className="mx-auto w-full max-w-sm space-y-4">
+                <Input
+                  placeholder="Email"
+                  type="email"
+                  value={formData.email}
+                  onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+                  required
+                />
+                <Textarea
+                  placeholder="Message"
+                  value={formData.message}
+                  onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
+                  required
+                />
+                <Button className="w-full" type="submit" disabled={isSubmitting}>
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                </Button>
+
+                {submitStatus === 'success' && (
+                  <p className="text-green-600 text-sm text-center">
+                    Message sent successfully!
+                  </p>
+                )}
+
+                {submitStatus === 'error' && (
+                  <p className="text-red-600 text-sm text-center">
+                    {errorMessage}
+                  </p>
+                )}
+              </form>
             </div>
           </BlurFade>
         </div>
