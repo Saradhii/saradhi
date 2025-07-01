@@ -8,7 +8,7 @@ export const DATA = {
   location: "San Francisco, CA",
   locationLink: "https://www.google.com/maps/place/sanfrancisco",
   description:
-    "Full stack web developer and an MCA graduate with 3 years of experience in web development. ",
+    "Full stack web developer and an MCA graduate with 3 years of experience in web development.",
   summary:
     "I am a Full Stack Web Developer with 3 years of hands-on experience in building dynamic and responsive web applications. I hold a Master’s degree in Computer Applications (MCA) with a solid foundation in computer science and real-world experience in modern web technologies.",
   avatarUrl: "/my-image.png",
@@ -67,7 +67,7 @@ export const DATA = {
     },
     {
       name: "Git",
-      icon: '/skills/github.svg'
+      icon: '/skills/git.png'
     },
     {
       name: "Prisma",
@@ -127,7 +127,7 @@ export const DATA = {
       badges: [],
       location: "Remote/chennai",
       title: "My Updated Resume",
-      logoUrl: "/resume/pdf-svgrepo-com.svg",
+      logoUrl: "/resume/pdf.svg",
       status: "",
     }
   ],
@@ -144,7 +144,7 @@ export const DATA = {
       school: "Vishnu Institute of Technology",
       href: "https://vishnu.edu.in",
       degree: "Master of Computer Applications",
-      logoUrl: "/vit.webp",
+      logoUrl: "/vishnu-college.png",
       start: "2018",
       end: "2020",
     },

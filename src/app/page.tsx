@@ -280,17 +280,14 @@ export default function Page() {
                 Get in Touch
               </h2>
               <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Have a question or want to work together?
-              </p>
-              <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Choose your preferred way to connect.
+               Open to new roles — feel free to reach out!
               </p>
             </div>
           </BlurFade>
 
           {/* Quick Contact Links */}
           <BlurFade delay={BLUR_FADE_DELAY * 17}>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-2xl mx-auto">
+            <div className="flex flex-wrap sm:flex-row gap-4 justify-center items-center max-w-2xl mx-auto">
               <Link
                 href="https://wa.me/918142385201?text=Hi%20Saradhi,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!"
                 target="_blank"
