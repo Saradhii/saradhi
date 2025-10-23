@@ -120,17 +120,7 @@ export const DATA = {
       description: "I am a Full Stack Web Developer with 3 years of hands-on experience in building dynamic and responsive web applications. I hold a Master’s degree in Computer Applications (MCA) with a solid foundation in computer science and real-world experience in modern web technologies.",
     }
   ],
-  resume: [
-    {
-      company: "Download or Preview",
-      href: "/resume/resume.pdf",
-      badges: [],
-      location: "Remote/chennai",
-      title: "My Updated Resume",
-      logoUrl: "/resume/pdf.svg",
-      status: "",
-    }
-  ],
+  resume: [],
   education: [
     {
       school: "Masai School",
