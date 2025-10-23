@@ -114,7 +114,7 @@ export const DATA = {
       badges: [],
       location: "Hyderabad",
       title: "Full stack web developer",
-      logoUrl: "/turtil_png_logo.svg",
+      logoUrl: "/turtil_logo.jpeg",
       start: "Sep 2025",
       end: "Present",
       description: "I am a Full Stack Web Developer with 3 years of hands-on experience in building dynamic and responsive web applications. I hold a Master's degree in Computer Applications (MCA) with a solid foundation in computer science and real-world experience in modern web technologies.",
