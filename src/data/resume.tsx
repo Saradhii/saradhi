@@ -115,7 +115,7 @@ export const DATA = {
       location: "Hyderabad",
       title: "Full stack web developer",
       logoUrl: "/turtil_logo.jpeg",
-      start: "Sep 2025",
+      start: "Aug 2025",
       end: "Present",
       description: "I am a Full Stack Web Developer with 3 years of hands-on experience in building dynamic and responsive web applications. I hold a Master's degree in Computer Applications (MCA) with a solid foundation in computer science and real-world experience in modern web technologies.",
     },
@@ -127,7 +127,7 @@ export const DATA = {
       title: "Full stack web developer",
       logoUrl: "/intoglo.png",
       start: "Oct 2022",
-      end: "Aug 2025",
+      end: "Jul 2025",
       description: "I am a Full Stack Web Developer with 3 years of hands-on experience in building dynamic and responsive web applications. I hold a Master's degree in Computer Applications (MCA) with a solid foundation in computer science and real-world experience in modern web technologies.",
     }
   ],
