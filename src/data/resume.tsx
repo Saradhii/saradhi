@@ -145,7 +145,7 @@ export const DATA = {
       school: "Vishnu Institute of Technology",
       href: "https://vishnu.edu.in",
       degree: "Master of Computer Applications",
-      logoUrl: "/vishnu-college.png",
+      logoUrl: "/bvrit.png",
       start: "2018",
       end: "2020",
     },

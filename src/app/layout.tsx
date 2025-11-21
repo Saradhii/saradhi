@@ -58,15 +58,18 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased max-w-2xl mx-auto py-12 sm:py-24 px-6",
+          "min-h-screen bg-background font-sans antialiased max-w-2xl mx-auto py-12 sm:py-24 px-6 double-border",
           fontSans.variable
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="light">
           <TooltipProvider delayDuration={0}>
-            {children}
-            <Analytics/>
-            <Navbar />
+            <div className="content-wrapper">
+              {children}
+              <Analytics/>
+              <Navbar />
+            </div>
+            <div className="bottom-border-line"></div>
           </TooltipProvider>
         </ThemeProvider>
       </body>

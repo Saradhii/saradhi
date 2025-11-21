@@ -90,6 +90,7 @@ export default function Page() {
           </Markdown>
         </BlurFade>
       </section>
+      <div className="section-divider"></div>
       <section id="work">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 5}>
@@ -138,6 +139,7 @@ export default function Page() {
           ))}
         </div>
       </section>
+      <div className="section-divider"></div>
       <section id="skills">
         <div className="flex min-h-0 flex-col gap-y-6">
           <BlurFade delay={BLUR_FADE_DELAY * 9}>
@@ -202,6 +204,7 @@ export default function Page() {
           </div>
         </div>
       </section>
+      <div className="section-divider"></div>
       {/* <section id="hackathons">
         <div className="space-y-12 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 13}>
