@@ -7,6 +7,7 @@ import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next"
+import { PostHogProvider } from "@/components/PostHogProvider";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -62,16 +63,18 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="light">
-          <TooltipProvider delayDuration={0}>
-            <div className="content-wrapper">
-              {children}
-              <Analytics/>
-              <Navbar />
-            </div>
-            <div className="bottom-border-line"></div>
-          </TooltipProvider>
-        </ThemeProvider>
+        <PostHogProvider>
+          <ThemeProvider attribute="class" defaultTheme="light">
+            <TooltipProvider delayDuration={0}>
+              <div className="content-wrapper">
+                {children}
+                <Analytics/>
+                <Navbar />
+              </div>
+              <div className="bottom-border-line"></div>
+            </TooltipProvider>
+          </ThemeProvider>
+        </PostHogProvider>
       </body>
     </html>
   );
