@@ -121,7 +121,7 @@ export const DATA = {
     },
     {
       company: "Intoglo Private Limited",
-      href: "https://intolgo.com",
+      href: "https://intoglo.com",
       badges: [],
       location: "Remote/chennai",
       title: "Full stack web developer",
