@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
+import { ContactStatus } from "@/components/contact-status";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -21,6 +22,12 @@ export default function Page() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+
+  const resetForm = () => {
+    setSubmitStatus('idle');
+    setFormData({ email: '', message: '' });
+    setErrorMessage('');
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -313,36 +320,33 @@ export default function Page() {
           <BlurFade delay={BLUR_FADE_DELAY * 19}>
             <div className="space-y-4">
               <h3 className="text-lg font-semibold">Send me a message</h3>
-              <form onSubmit={handleSubmit} className="mx-auto w-full max-w-sm space-y-4">
-                <Input
-                  placeholder="Email"
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                  required
-                />
-                <Textarea
-                  placeholder="Message"
-                  value={formData.message}
-                  onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
-                  required
-                />
-                <Button className="w-full" type="submit" disabled={isSubmitting}>
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
-                </Button>
 
-                {submitStatus === 'success' && (
-                  <p className="text-green-600 text-sm text-center">
-                    Message sent successfully!
-                  </p>
-                )}
-
-                {submitStatus === 'error' && (
-                  <p className="text-red-600 text-sm text-center">
-                    {errorMessage}
-                  </p>
-                )}
-              </form>
+              {submitStatus === 'idle' ? (
+                <form onSubmit={handleSubmit} className="mx-auto w-full max-w-sm space-y-4">
+                  <Input
+                    placeholder="Email"
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+                    required
+                  />
+                  <Textarea
+                    placeholder="Message"
+                    value={formData.message}
+                    onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
+                    required
+                  />
+                  <Button className="w-full" type="submit" disabled={isSubmitting}>
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                  </Button>
+                </form>
+              ) : (
+                <ContactStatus
+                  status={submitStatus}
+                  errorMessage={errorMessage}
+                  onReset={resetForm}
+                />
+              )}
             </div>
           </BlurFade>
         </div>
