@@ -8,6 +8,8 @@ import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next"
 import { PostHogProvider } from "@/components/PostHogProvider";
+import { TopIntersections } from "@/components/top-intersections";
+import { BottomIntersections } from "@/components/bottom-intersections";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -67,11 +69,14 @@ export default function RootLayout({
           <ThemeProvider attribute="class" defaultTheme="light">
             <TooltipProvider delayDuration={0}>
               <div className="content-wrapper">
+                <TopIntersections />
                 {children}
                 <Analytics/>
                 <Navbar />
               </div>
-              <div className="bottom-border-line"></div>
+              <div className="bottom-border-line">
+                <BottomIntersections />
+              </div>
             </TooltipProvider>
           </ThemeProvider>
         </PostHogProvider>

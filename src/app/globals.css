@@ -150,8 +150,8 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 
 .double-border {
   position: relative;
-  border-left: 2px dashed hsl(var(--border));
-  border-right: 2px dashed hsl(var(--border));
+  border-left: 1px solid hsl(var(--border) / 0.5);
+  border-right: 1px solid hsl(var(--border) / 0.5);
 }
 
 .double-border::before,
@@ -160,44 +160,24 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
   position: absolute;
   top: 0;
   bottom: 0;
-  border-left: 2px dashed hsl(var(--border));
+  border-left: 1px solid hsl(var(--border) / 0.5);
 }
 
 .double-border::before {
-  left: -0.75rem;
+  left: -100px;
 }
 
 .double-border::after {
-  right: -0.75rem;
+  right: -100px;
   border-left: none;
-  border-right: 2px dashed hsl(var(--border));
-}
-
-@media (min-width: 640px) {
-  .double-border::before {
-    left: -1.5rem;
-  }
-
-  .double-border::after {
-    right: -1.5rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .double-border::before {
-    left: -2rem;
-  }
-
-  .double-border::after {
-    right: -2rem;
-  }
+  border-right: 1px solid hsl(var(--border) / 0.5);
 }
 
 .content-wrapper {
   position: relative;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 2rem;
+  padding-top: calc(-1.5rem + 100px + 2rem);
   padding-bottom: 2rem;
 }
 
@@ -205,7 +185,7 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
   .content-wrapper {
     padding-left: 2rem;
     padding-right: 2rem;
-    padding-top: 2.5rem;
+    padding-top: calc(-1.75rem + 100px + 2.5rem);
     padding-bottom: 2.5rem;
   }
 }
@@ -214,7 +194,7 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
   .content-wrapper {
     padding-left: 3rem;
     padding-right: 3rem;
-    padding-top: 3rem;
+    padding-top: calc(-2rem + 100px + 3rem);
     padding-bottom: 3rem;
   }
 }
@@ -226,7 +206,7 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
   left: 50%;
   width: 100vw;
   margin-left: -50vw;
-  border-top: 2px dashed hsl(var(--border));
+  border-top: 1px solid hsl(var(--border) / 0.5);
 }
 
 @media (min-width: 640px) {
@@ -244,53 +224,89 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 .content-wrapper::after {
   content: '';
   position: absolute;
-  top: 0;
+  top: calc(-1.5rem + 100px);
   left: 50%;
   width: 100vw;
   margin-left: -50vw;
-  border-top: 2px dashed hsl(var(--border));
+  border-top: 1px solid hsl(var(--border) / 0.5);
+}
+
+@media (min-width: 640px) {
+  .content-wrapper::after {
+    top: calc(-1.75rem + 100px);
+  }
+}
+
+@media (min-width: 768px) {
+  .content-wrapper::after {
+    top: calc(-2rem + 100px);
+  }
 }
 
 .bottom-border-line {
   position: relative;
-  height: 1.5rem;
+  height: calc(1.5rem + 100px);
 }
 
 @media (min-width: 640px) {
   .bottom-border-line {
-    height: 1.75rem;
+    height: calc(1.75rem + 100px);
   }
 }
 
 @media (min-width: 768px) {
   .bottom-border-line {
-    height: 2rem;
+    height: calc(2rem + 100px);
   }
 }
 
 .bottom-border-line::before {
   content: '';
   position: absolute;
-  top: 0;
+  top: 1.5rem;
   left: 50%;
   width: 100vw;
   margin-left: -50vw;
-  border-top: 2px dashed hsl(var(--border));
+  border-top: 1px solid hsl(var(--border) / 0.5);
+}
+
+@media (min-width: 640px) {
+  .bottom-border-line::before {
+    top: 1.75rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .bottom-border-line::before {
+    top: 2rem;
+  }
 }
 
 .bottom-border-line::after {
   content: '';
   position: absolute;
-  bottom: 0;
+  top: calc(1.5rem + 100px);
   left: 50%;
   width: 100vw;
   margin-left: -50vw;
-  border-bottom: 2px dashed hsl(var(--border));
+  border-top: 1px solid hsl(var(--border) / 0.5);
+}
+
+@media (min-width: 640px) {
+  .bottom-border-line::after {
+    top: calc(1.75rem + 100px);
+  }
+}
+
+@media (min-width: 768px) {
+  .bottom-border-line::after {
+    top: calc(2rem + 100px);
+  }
 }
 
 .section-divider {
   position: relative;
-  height: 2rem;
+  height: 6.25rem;
   margin: 1.5rem 0;
 }
 
@@ -306,7 +322,7 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
   top: 0;
   left: -1.75rem;
   right: -1.75rem;
-  border-top: 2px dashed hsl(var(--border));
+  border-top: 1px solid hsl(var(--border) / 0.5);
 }
 
 .section-divider::after {
@@ -315,7 +331,7 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
   bottom: 0;
   left: -1.75rem;
   right: -1.75rem;
-  border-top: 2px dashed hsl(var(--border));
+  border-top: 1px solid hsl(var(--border) / 0.5);
 }
 
 @media (min-width: 640px) {
