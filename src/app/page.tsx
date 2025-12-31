@@ -181,7 +181,7 @@ export default function Page() {
       </section>
       <section id="projects">
         <div className="space-y-12 w-full py-12">
-          <BlurFade delay={BLUR_FADE_DELAY * 11}>
+          <BlurFade delay={BLUR_FADE_DELAY * 12}>
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
@@ -202,7 +202,7 @@ export default function Page() {
             {DATA.projects.map((project, id) => (
               <BlurFade
                 key={project.title}
-                delay={BLUR_FADE_DELAY * 12 + id * 0.05}
+                delay={BLUR_FADE_DELAY * 13 + id * 0.05}
               >
                 <ProjectCard
                   href={project.href}
@@ -265,7 +265,7 @@ export default function Page() {
       </section> */}
       <section id="contact">
         <div className="grid items-center justify-center gap-8 px-4 text-center md:px-6 w-full py-12">
-          <BlurFade delay={BLUR_FADE_DELAY * 16}>
+          <BlurFade delay={BLUR_FADE_DELAY * 17}>
             <div className="space-y-3">
               <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
                 Contact
@@ -280,7 +280,7 @@ export default function Page() {
           </BlurFade>
 
           {/* Quick Contact Links */}
-          <BlurFade delay={BLUR_FADE_DELAY * 17}>
+          <BlurFade delay={BLUR_FADE_DELAY * 18}>
             <div className="flex flex-wrap sm:flex-row gap-4 justify-center items-center max-w-2xl mx-auto">
               <Link
                 href="https://wa.me/918142385201?text=Hi%20Saradhi,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!"
@@ -316,7 +316,7 @@ export default function Page() {
           </BlurFade>
 
           {/* Divider */}
-          <BlurFade delay={BLUR_FADE_DELAY * 18}>
+          <BlurFade delay={BLUR_FADE_DELAY * 19}>
             <div className="flex items-center max-w-md mx-auto">
               <div className="flex-1 border-t border-muted-foreground/20"></div>
               <span className="px-4 text-sm text-muted-foreground">or</span>
@@ -325,7 +325,7 @@ export default function Page() {
           </BlurFade>
 
           {/* Contact Form */}
-          <BlurFade delay={BLUR_FADE_DELAY * 19}>
+          <BlurFade delay={BLUR_FADE_DELAY * 20}>
             <div className="space-y-4">
               <h3 className="text-lg font-semibold">Send me a message</h3>
 
