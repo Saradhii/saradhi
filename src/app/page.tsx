@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 import { ContactStatus } from "@/components/contact-status";
+import { GitHubCalendarWrapper } from "@/components/github-calendar";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -64,7 +65,7 @@ export default function Page() {
     <main className="flex flex-col min-h-[100dvh] space-y-10">
       <section id="hero">
         <div className="mx-auto w-full max-w-2xl space-y-8">
-          <div className="gap-2 flex justify-between">
+          <div className="gap-2 flex justify-between items-center">
             <div className="flex-col flex flex-1 space-y-1.5">
               <BlurFadeText
                 delay={BLUR_FADE_DELAY}
@@ -97,15 +98,25 @@ export default function Page() {
           </Markdown>
         </BlurFade>
       </section>
-      <section id="work">
+      <section id="github">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 5}>
+            <h2 className="text-xl font-bold">GitHub Activity</h2>
+          </BlurFade>
+          <BlurFade delay={BLUR_FADE_DELAY * 5.5}>
+            <GitHubCalendarWrapper username="saradhii" />
+          </BlurFade>
+        </div>
+      </section>
+      <section id="work">
+        <div className="flex min-h-0 flex-col gap-y-3">
+          <BlurFade delay={BLUR_FADE_DELAY * 6}>
             <h2 className="text-xl font-bold">Work Experience</h2>
           </BlurFade>
           {DATA.work.map((work, id) => (
             <BlurFade
               key={work.company}
-              delay={BLUR_FADE_DELAY * 6 + id * 0.05}
+              delay={BLUR_FADE_DELAY * 7 + id * 0.05}
             >
               <ResumeCard
                 key={work.company}
@@ -124,13 +135,13 @@ export default function Page() {
       </section>
       <section id="education">
         <div className="flex min-h-0 flex-col gap-y-3">
-          <BlurFade delay={BLUR_FADE_DELAY * 7}>
+          <BlurFade delay={BLUR_FADE_DELAY * 8}>
             <h2 className="text-xl font-bold">Education</h2>
           </BlurFade>
           {DATA.education.map((education, id) => (
             <BlurFade
               key={education.school}
-              delay={BLUR_FADE_DELAY * 8 + id * 0.05}
+              delay={BLUR_FADE_DELAY * 9 + id * 0.05}
             >
               <ResumeCard
                 key={education.school}
