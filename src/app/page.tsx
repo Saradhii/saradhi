@@ -158,12 +158,12 @@ export default function Page() {
       </section>
       <section id="skills">
         <div className="flex min-h-0 flex-col gap-y-6">
-          <BlurFade delay={BLUR_FADE_DELAY * 9}>
+          <BlurFade delay={BLUR_FADE_DELAY * 10}>
             <h2 className="text-xl font-bold text-center">Skills</h2>
           </BlurFade>
           <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 max-w-4xl mx-auto">
             {DATA.skills.map((skill, id) => (
-              <BlurFade key={skill.name} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
+              <BlurFade key={skill.name} delay={BLUR_FADE_DELAY * 11 + id * 0.05}>
                 <div key={skill.name} className="flex flex-col items-center gap-2 px-3 py-4 border border-border rounded-lg bg-card hover:bg-accent transition-colors duration-200 text-center">
                   <div className="w-8 h-8 rounded flex items-center justify-center">
                     <img
