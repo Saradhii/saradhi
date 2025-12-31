@@ -101,7 +101,20 @@ export default function Page() {
       <section id="github">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 5}>
-            <h2 className="text-xl font-bold">GitHub Activity</h2>
+            <div className="flex items-center justify-between">
+              <h2 className="text-xl font-bold">GitHub Activity</h2>
+              <Link
+                href="https://github.com/saradhii"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
+              >
+                View Profile
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </Link>
+            </div>
           </BlurFade>
           <BlurFade delay={BLUR_FADE_DELAY * 5.5}>
             <GitHubCalendarWrapper username="saradhii" />
