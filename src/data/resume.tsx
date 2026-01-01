@@ -7,10 +7,11 @@ export const DATA = {
   url: "https://dillion.io",
   location: "San Francisco, CA",
   locationLink: "https://www.google.com/maps/place/sanfrancisco",
+  careerStartDate: "2022-10-06",
   description:
-    "Full-stack web developer, 3 YOE",
+    "Full-stack web developer, {YEARS} Years Of Experience",
   summary:
-    "I am a Full Stack Web Developer with 3 years of hands-on experience in building dynamic and responsive web applications. I hold a Master’s degree in Computer Applications (MCA) with a solid foundation in computer science and real-world experience in modern web technologies.",
+    "I am a Full Stack Web Developer with {YEARS} years of hands-on experience in building dynamic and responsive web applications. I hold a Master's degree in Computer Applications (MCA) with a solid foundation in computer science and real-world experience in modern web technologies.",
   avatarUrl: "/my-image.png",
   skills: [
     {
@@ -46,8 +47,8 @@ export const DATA = {
       icon: '/skills/python.svg'
     },
     {
-      name: "FastAPI",
-      icon: '/skills/fastapi.svg'
+      name: "Elasticsearch",
+      icon: '/skills/elasticsearch.svg'
     },
     {
       name: "Docker",
@@ -117,7 +118,6 @@ export const DATA = {
       logoUrl: "/turtil_logo.jpeg",
       start: "Aug 2025",
       end: "Present",
-      description: "I am a Full Stack Web Developer with 3 years of hands-on experience in building dynamic and responsive web applications. I hold a Master's degree in Computer Applications (MCA) with a solid foundation in computer science and real-world experience in modern web technologies.",
     },
     {
       company: "Intoglo Private Limited",
@@ -128,7 +128,6 @@ export const DATA = {
       logoUrl: "/intoglo.png",
       start: "Oct 2022",
       end: "Jul 2025",
-      description: "I am a Full Stack Web Developer with 3 years of hands-on experience in building dynamic and responsive web applications. I hold a Master's degree in Computer Applications (MCA) with a solid foundation in computer science and real-world experience in modern web technologies.",
     }
   ],
   resume: [],

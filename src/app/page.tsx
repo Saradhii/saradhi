@@ -15,14 +15,40 @@ import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 import { ContactStatus } from "@/components/contact-status";
 import { GitHubCalendarWrapper } from "@/components/github-calendar";
+import { differenceInMonths, parseISO } from "date-fns";
 
 const BLUR_FADE_DELAY = 0.04;
+
+// Calculate years of experience from career start date
+const calculateYearsOfExperience = (startDate: string): string => {
+  const start = parseISO(startDate);
+  const now = new Date();
+  const totalMonths = differenceInMonths(now, start);
+  const years = totalMonths / 12;
+  return years.toFixed(1);
+};
+
+// Replace {YEARS} placeholder with calculated years
+const replaceYearsPlaceholder = (text: string, years: string): string => {
+  return text.replace(/\{YEARS\}/g, years);
+};
 
 export default function Page() {
   const [formData, setFormData] = useState({ email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+
+  // Calculate years of experience dynamically
+  const years = calculateYearsOfExperience(DATA.careerStartDate);
+  const description = replaceYearsPlaceholder(DATA.description, years);
+  const summary = replaceYearsPlaceholder(DATA.summary, years);
+
+  // Transform work array to add period string
+  const workExperience = DATA.work.map((job) => ({
+    ...job,
+    period: `${job.start} - ${job.end}`,
+  }));
 
   const resetForm = () => {
     setSubmitStatus('idle');
@@ -76,7 +102,7 @@ export default function Page() {
               <BlurFadeText
                 className="max-w-[600px] md:text-xl"
                 delay={BLUR_FADE_DELAY}
-                text={DATA.description}
+                text={description}
               />
             </div>
             <BlurFade delay={BLUR_FADE_DELAY}>
@@ -94,7 +120,7 @@ export default function Page() {
         </BlurFade>
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
           <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
-            {DATA.summary}
+            {summary}
           </Markdown>
         </BlurFade>
       </section>
@@ -126,7 +152,7 @@ export default function Page() {
           <BlurFade delay={BLUR_FADE_DELAY * 6}>
             <h2 className="text-xl font-bold">Work Experience</h2>
           </BlurFade>
-          {DATA.work.map((work, id) => (
+          {workExperience.map((work, id) => (
             <BlurFade
               key={work.company}
               delay={BLUR_FADE_DELAY * 7 + id * 0.05}
@@ -139,8 +165,7 @@ export default function Page() {
                 subtitle={work.title}
                 href={work.href}
                 badges={work.badges}
-                period={`${work.start} - ${work.end ?? "Present"}`}
-                description={work.description}
+                period={work.period}
               />
             </BlurFade>
           ))}
@@ -182,7 +207,7 @@ export default function Page() {
                     <img
                       src={skill.icon}
                       alt={skill.name}
-                      className="w-6 h-6"
+                      className={`w-6 h-6 ${skill.name === "Next.js" ? "dark:invert" : ""}`}
                     />
                   </div>
                   <span className="text-xs font-medium">{skill.name}</span>
