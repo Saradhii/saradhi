@@ -195,9 +195,18 @@ export default function Page() {
         </div>
       </section>
       <section id="skills">
-        <div className="flex min-h-0 flex-col gap-y-6">
+        <div className="space-y-12 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 10}>
-            <h2 className="text-xl font-bold text-center">Skills</h2>
+            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+              <div className="space-y-2">
+                <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
+                  Skills
+                </div>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                  My Tech Stack
+                </h2>
+              </div>
+            </div>
           </BlurFade>
           <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 max-w-4xl mx-auto">
             {DATA.skills.map((skill, id) => (
@@ -229,9 +238,7 @@ export default function Page() {
                   Check out my latest work
                 </h2>
                 <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  I&apos;ve worked on a variety of projects, from simple
-                  websites to complex web applications. Here are a few of my
-                  favorites.
+                  Some projects I&apos;ve enjoyed building.
                 </p>
               </div>
             </div>

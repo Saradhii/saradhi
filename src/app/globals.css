@@ -165,12 +165,21 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 
 .double-border::before {
   left: -100px;
+  display: none;
 }
 
 .double-border::after {
   right: -100px;
   border-left: none;
   border-right: 1px solid hsl(var(--border) / 0.5);
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .double-border::before,
+  .double-border::after {
+    display: block;
+  }
 }
 
 .content-wrapper {
